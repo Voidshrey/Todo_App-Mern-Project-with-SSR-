@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Maintainer</title>
+    <style>
+        table,
+        td,
+        th {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+            text-align: center;
+        }
+
+        #delete-button {
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+        }
+
+        #update-button {
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+        }
+
+        #create-button {
+            background-color: greenyellow;
+            color: black;
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1 style="text-align: center;"><span style="color: greenyellow;">T</span><span
+                style="color: rgb(27, 130, 203);">O</span><span style="color: rgb(227, 73, 16);">D</span><span
+                style="color: rgb(211, 20, 160);">O</span> <span style="font-weight: bold;">'s</span></h1>
+        <div class="container" style="display: flex; justify-content:center">
+            <form action="/api/v1/todo" method="post">
+                <input type="text" name="todoName" style="width: 20rem; height:2rem "
+                    placeholder="what's on your mind today note and take action.">
+                <button type="submit" id="create-button">Create a Todo</button>
+            </form>
+        </div>
+        <div class="list-todo" style="display: flex ; justify-content:center ; margin-top:2rem">
+            <table>
+                <tr>
+                    <th>TODO'S</th>
+                    <th>IsCOMPLETED ?</th>
+                    <th>CREATEDTIME</th>
+                    <th>ACTION</th>
+                    <th>ACTION</th>
+                </tr>
+
+                <% todos.forEach( todo=>{ %>
+                    <tr>
+                        <td>
+                            <%= todo.todoName %>
+                        </td>
+                        <td style="color:<%= todo.isCompleted ? '#2bd71c' : '#d7a11c' %>">
+                            <%= todo.isCompleted %>
+                        </td>
+                        <td>
+                            <%= new Date(todo.createdAt).toLocaleString('en-IN', { year: 'numeric' , month: '2-digit' ,
+                                day: '2-digit' , hour: '2-digit' , minute: '2-digit' , second: '2-digit' , hour12: false
+                                }) %>
+                        </td>
+                        <td>
+                            <form action="/api/v1/todo/<%= todo._id%>" method="get">
+                                <button type="submit" id="update-button">Update</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/api/v1/todo/<%= todo._id %>?_method=DELETE" method="post">
+                                <button type="submit" id="delete-button">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

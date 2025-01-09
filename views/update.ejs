@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #update-btn {
+            background-color: orange;
+            color: black;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        #goBack-btn {
+            background-color: silver;
+            color: black;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1 style="text-align:center">Update Todo</h1>
+        <div class="container" style="display: flex; justify-content:center">
+            <form method="post" action="/api/v1/todo/<%= todos._id %>?_method=PUT">
+                <div style="margin: 1rem;">
+                    <label style="font-weight: bold;">Todo Name : </label>
+                    <input type="text" name="todoName" style="width: 20rem; height: 2rem" value="<%= todos.todoName %>">
+                </div>
+                <div style="margin: 1rem;"> <label style="font-weight: bold;">isCompleted : </label>
+                    <input type="text" name="isCompleted" style="width: 10rem;" value="<%= todos.isCompleted %>">
+                </div>
+                <div style="margin: 1rem; text-align:center"><button type="submit" id="update-btn"> Update </button>
+                </div>
+            </form>
+        </div>
+        <div class="goBack" style="text-align: center;">
+            <form action="/api/v1/todo" method="get">
+                <button type="submit" id="goBack-btn">go Back Home</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
