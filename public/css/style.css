@@ -1,0 +1,48 @@
+table,
+td,
+th {
+  border: 2px solid black;
+  border-collapse: collapse;
+  padding: 5px;
+  text-align: center;
+}
+
+#delete-button {
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+}
+
+#update-button {
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+}
+
+#create-button {
+  background-color: greenyellow;
+  color: black;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.list-todo {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+#update-btn {
+  background-color: orange;
+  color: black;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#goBack-btn {
+  background-color: silver;
+  color: black;
+  padding: 5px;
+  border-radius: 5px;
+}
